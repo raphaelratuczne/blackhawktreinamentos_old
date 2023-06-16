@@ -46,6 +46,7 @@ function App() {
       </p>
       <p>teste deploy 3</p>
       <p>cria branch prod</p>
+      <p>teste deploys github e firebase</p>
     </>
   );
 }
