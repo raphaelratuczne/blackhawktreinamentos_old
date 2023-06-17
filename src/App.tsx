@@ -8,7 +8,7 @@ const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
 const Users = lazy(() => import('./pages/Users/Users'));
 
-const publicUrl = process.env.PUBLIC_URL;
+const publicUrl = import.meta.env.PUBLIC_URL;
 
 function App() {
   useEffect(() => {
