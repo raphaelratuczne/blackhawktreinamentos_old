@@ -5,6 +5,8 @@ on:
     branches: [ "hmg" ]
   pull_request:
     branches: [ "hmg" ]
+env:
+  PUBLIC_URL: ${{ vars.PUBLIC_URL }}
 
 jobs:
   build:
