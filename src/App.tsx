@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <HashRouter basename={publicUrl}>
+    <HashRouter basename="">
       <Switch>
         <Route path="/users">
           <Suspense fallback={<div>Loading...</div>}>
