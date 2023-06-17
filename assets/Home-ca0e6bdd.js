@@ -1,1 +1,0 @@
-import{j as s,L as e}from"./index-ed6e99a1.js";const r=()=>(console.log("home"),s.jsxs("div",{className:"Home",children:[s.jsx("p",{children:"Home"}),s.jsx(e,{to:"/about",children:"About"})," ",s.jsx(e,{to:"/users",children:"Users"})]}));export{r as default};
