@@ -5,6 +5,9 @@ on:
     branches: [ "hmg" ]
   pull_request:
     branches: [ "hmg" ]
+env:
+  VITE_PUBLIC_URL: ${{ vars.VITE_PUBLIC_URL }}
+  VITE_FRONT_ENV: "hmg"
 
 jobs:
   build:

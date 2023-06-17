@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { useEffect, lazy, Suspense } from 'react';
 import './App.scss';
 import { initializeApp } from 'firebase/app';
+import { HashRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const About = lazy(() => import('./pages/About/About'));
+const Users = lazy(() => import('./pages/Users/Users'));
+
+const publicUrl = import.meta.env.VITE_PUBLIC_URL;
+const frontEnv = import.meta.env.VITE_FRONT_ENV;
+
+const Router = ({ children, props }: any) => {
+  return frontEnv === 'hmg' ? (
+    <HashRouter {...props}>{children}</HashRouter>
+  ) : (
+    <BrowserRouter {...props}>{children}</BrowserRouter>
+  );
+};
 
 function App() {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
     const firebaseConfig = {
       apiKey: 'AIzaSyDPCsrqkYdJdIse_e6ASypCC6LVuvBSOV4',
@@ -20,34 +32,35 @@ function App() {
     const app = initializeApp(firebaseConfig);
 
     console.log('app', app);
+
+    console.log('publicUrl ->', publicUrl);
   }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <p>teste deploy 3</p>
-      <p>cria branch prod</p>
-      <p>teste deploys github e firebase</p>
-    </>
+    <Router basename="">
+      <Switch>
+        <Route path="/users">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Users />
+          </Suspense>
+        </Route>
+        <Route path="/about">
+          <Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </Suspense>
+        </Route>
+        <Route path="/home">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        </Route>
+        <Route path="/">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
