@@ -1,14 +1,22 @@
 import { useEffect, lazy, Suspense } from 'react';
 import './App.scss';
 import { initializeApp } from 'firebase/app';
-// import * as ReactDOM from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
 const Users = lazy(() => import('./pages/Users/Users'));
 
 const publicUrl = import.meta.env.VITE_PUBLIC_URL;
+const frontEnv = import.meta.env.VITE_FRONT_ENV;
+
+const Router = ({ children, props }: any) => {
+  return frontEnv === 'hmg' ? (
+    <HashRouter {...props}>{children}</HashRouter>
+  ) : (
+    <BrowserRouter {...props}>{children}</BrowserRouter>
+  );
+};
 
 function App() {
   useEffect(() => {
@@ -25,50 +33,35 @@ function App() {
 
     console.log('app', app);
 
-    console.log('publicUrl', publicUrl);
+    console.log('publicUrl ->', publicUrl);
   }, []);
 
-  const router = createHashRouter(
-    [
-      {
-        path: '/about',
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <About />
-          </Suspense>
-        ),
-      },
-      {
-        path: '/users',
-        element: (
+  return (
+    <Router basename="">
+      <Switch>
+        <Route path="/users">
           <Suspense fallback={<div>Loading...</div>}>
             <Users />
           </Suspense>
-        ),
-      },
-      {
-        path: '/home',
-        element: (
+        </Route>
+        <Route path="/about">
+          <Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </Suspense>
+        </Route>
+        <Route path="/home">
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
           </Suspense>
-        ),
-      },
-      {
-        path: '/*',
-        element: (
+        </Route>
+        <Route path="/">
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
           </Suspense>
-        ),
-      },
-    ],
-    {
-      basename: publicUrl,
-    }
+        </Route>
+      </Switch>
+    </Router>
   );
-
-  return <RouterProvider router={router} />;
 }
 
 export default App;
