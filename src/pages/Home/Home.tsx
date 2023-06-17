@@ -1,12 +1,12 @@
 // import React from 'react';
 // import './Home.scss';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <div className="Home">
       <p>Home</p>
-      <a href="/about">About</a>
-      <a href="/users">Users</a>
+      <Link to="/about">About</Link> <Link to="/users">Users</Link>
     </div>
   );
 };
