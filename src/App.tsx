@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import './App.scss';
 import { initializeApp } from 'firebase/app';
 // import * as ReactDOM from 'react-dom/client';
@@ -9,8 +9,6 @@ const About = lazy(() => import('./pages/About/About'));
 const Users = lazy(() => import('./pages/Users/Users'));
 
 function App() {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
     const firebaseConfig = {
       apiKey: 'AIzaSyDPCsrqkYdJdIse_e6ASypCC6LVuvBSOV4',
