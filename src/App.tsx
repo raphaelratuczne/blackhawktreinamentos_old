@@ -8,6 +8,8 @@ const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
 const Users = lazy(() => import('./pages/Users/Users'));
 
+const publicUrl = import.meta.env.PUBLIC_URL;
+
 function App() {
   useEffect(() => {
     const firebaseConfig = {
@@ -22,42 +24,49 @@ function App() {
     const app = initializeApp(firebaseConfig);
 
     console.log('app', app);
+
+    console.log('publicUrl', publicUrl);
   }, []);
 
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: '/about',
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/users',
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Users />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/home',
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/',
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        ),
+      },
+    ],
     {
-      path: '/blackhawktreinamentos/about',
-      element: (
-        <Suspense fallback={<div>Loading...</div>}>
-          <About />
-        </Suspense>
-      ),
-    },
-    {
-      path: '/blackhawktreinamentos/users',
-      element: (
-        <Suspense fallback={<div>Loading...</div>}>
-          <Users />
-        </Suspense>
-      ),
-    },
-    {
-      path: '/blackhawktreinamentos/home',
-      element: (
-        <Suspense fallback={<div>Loading...</div>}>
-          <Home />
-        </Suspense>
-      ),
-    },
-    {
-      path: '/blackhawktreinamentos',
-      element: (
-        <Suspense fallback={<div>Loading...</div>}>
-          <Home />
-        </Suspense>
-      ),
-    },
-  ]);
+      basename: publicUrl,
+    }
+  );
 
   return <RouterProvider router={router} />;
 }
