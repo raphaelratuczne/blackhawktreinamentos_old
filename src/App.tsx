@@ -26,7 +26,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/about',
+      path: '/blackhawktreinamentos/about',
       element: (
         <Suspense fallback={<div>Loading...</div>}>
           <About />
@@ -34,7 +34,7 @@ function App() {
       ),
     },
     {
-      path: '/users',
+      path: '/blackhawktreinamentos/users',
       element: (
         <Suspense fallback={<div>Loading...</div>}>
           <Users />
@@ -42,7 +42,7 @@ function App() {
       ),
     },
     {
-      path: '/home',
+      path: '/blackhawktreinamentos/home',
       element: (
         <Suspense fallback={<div>Loading...</div>}>
           <Home />
@@ -50,7 +50,7 @@ function App() {
       ),
     },
     {
-      path: '/',
+      path: '/blackhawktreinamentos',
       element: (
         <Suspense fallback={<div>Loading...</div>}>
           <Home />
