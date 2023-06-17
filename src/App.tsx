@@ -55,7 +55,7 @@ function App() {
         ),
       },
       {
-        path: '/*',
+        path: '/',
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
