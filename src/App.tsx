@@ -25,7 +25,7 @@ function App() {
 
     console.log('app', app);
 
-    console.log('publicUrl->', publicUrl);
+    console.log('publicUrl ->', publicUrl);
   }, []);
 
   const router = createHashRouter(
