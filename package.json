@@ -1,7 +1,7 @@
 {
   "name": "blackhawktreinamentos",
   "private": true,
-  "homepage": "https://raphaelratuczne.github.io/blackhawktreinamentos/#/",
+  "homepage": "https://raphaelratuczne.github.io/blackhawktreinamentos/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -17,7 +17,7 @@
     "firebase": "^9.22.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.13.0"
+    "react-router-dom": "^5.3.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

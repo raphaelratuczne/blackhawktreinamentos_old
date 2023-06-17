@@ -1,8 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import './App.scss';
 import { initializeApp } from 'firebase/app';
-// import * as ReactDOM from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
@@ -28,47 +27,32 @@ function App() {
     console.log('publicUrl ->', publicUrl);
   }, []);
 
-  const router = createHashRouter(
-    [
-      {
-        path: '/about',
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <About />
-          </Suspense>
-        ),
-      },
-      {
-        path: '/users',
-        element: (
+  return (
+    <HashRouter basename={publicUrl}>
+      <Switch>
+        <Route path="/users">
           <Suspense fallback={<div>Loading...</div>}>
             <Users />
           </Suspense>
-        ),
-      },
-      {
-        path: '/home',
-        element: (
+        </Route>
+        <Route path="/about">
+          <Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </Suspense>
+        </Route>
+        <Route path="/home">
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
           </Suspense>
-        ),
-      },
-      {
-        path: '/',
-        element: (
+        </Route>
+        <Route path="/">
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
           </Suspense>
-        ),
-      },
-    ],
-    {
-      basename: publicUrl,
-    }
+        </Route>
+      </Switch>
+    </HashRouter>
   );
-
-  return <RouterProvider router={router} />;
 }
 
 export default App;
