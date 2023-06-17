@@ -2,7 +2,11 @@ import { useEffect, lazy, Suspense } from 'react';
 import './App.scss';
 import { initializeApp } from 'firebase/app';
 // import * as ReactDOM from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import {
+  createHashRouter,
+  RouterProvider,
+  useLocation,
+} from 'react-router-dom';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
@@ -11,6 +15,7 @@ const Users = lazy(() => import('./pages/Users/Users'));
 const publicUrl = import.meta.env.VITE_PUBLIC_URL;
 
 function App() {
+  const location = useLocation();
   useEffect(() => {
     const firebaseConfig = {
       apiKey: 'AIzaSyDPCsrqkYdJdIse_e6ASypCC6LVuvBSOV4',
@@ -27,6 +32,10 @@ function App() {
 
     console.log('publicUrl', publicUrl);
   }, []);
+
+  useEffect(() => {
+    console.log('location', location);
+  }, [location]);
 
   const router = createHashRouter(
     [
