@@ -1,0 +1,1 @@
+import{j as s}from"./index-161cd764.js";const r=()=>s.jsxs("div",{className:"About",children:[s.jsx("p",{children:"About"}),s.jsx("a",{href:"/home",children:"Home"}),s.jsx("a",{href:"/users",children:"Users"})]});export{r as default};
