@@ -1,12 +1,12 @@
 // import React from 'react';
 // import './Users.scss';
+import { Link } from 'react-router-dom';
 
 const Users = () => {
   return (
     <div className="Users">
       <p>Users</p>
-      <a href="/about">About</a>
-      <a href="/home">Home</a>
+      <Link to="/about">About</Link> <Link to="/home">Home</Link>
     </div>
   );
 };

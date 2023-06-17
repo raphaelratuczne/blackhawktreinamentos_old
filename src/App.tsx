@@ -2,7 +2,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import './App.scss';
 import { initializeApp } from 'firebase/app';
 // import * as ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
@@ -28,7 +28,7 @@ function App() {
     console.log('publicUrl', publicUrl);
   }, []);
 
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     [
       {
         path: '/about',
