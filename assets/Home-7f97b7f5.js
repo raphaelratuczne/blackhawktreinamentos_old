@@ -1,1 +1,0 @@
-import{j as e}from"./index-6bb5d4d0.js";const r=()=>e.jsxs("div",{className:"Home",children:[e.jsx("p",{children:"Home"}),e.jsx("a",{href:"/about",children:"About"}),e.jsx("a",{href:"/users",children:"Users"})]});export{r as default};
