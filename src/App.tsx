@@ -21,12 +21,12 @@ const Router = ({ children, props }: any) => {
 function App() {
   useEffect(() => {
     const firebaseConfig = {
-      apiKey: 'AIzaSyDPCsrqkYdJdIse_e6ASypCC6LVuvBSOV4',
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
       authDomain: 'blackhawktreinamentos.firebaseapp.com',
       projectId: 'blackhawktreinamentos',
       storageBucket: 'blackhawktreinamentos.appspot.com',
-      messagingSenderId: '1032100286936',
-      appId: '1:1032100286936:web:c9a70fd3b1f645491ea2ad',
+      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      appId: import.meta.env.VITE_FIREBASE_APP_ID,
     };
 
     const app = initializeApp(firebaseConfig);
