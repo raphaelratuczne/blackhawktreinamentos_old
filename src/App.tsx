@@ -6,6 +6,7 @@ import { HashRouter, BrowserRouter, Switch, Route } from 'react-router-dom';
 const Home = lazy(() => import('./pages/Home/Home'));
 const About = lazy(() => import('./pages/About/About'));
 const Users = lazy(() => import('./pages/Users/Users'));
+const Login = lazy(() => import('./pages/Login/Login'));
 
 const publicUrl = import.meta.env.VITE_PUBLIC_URL;
 const frontEnv = import.meta.env.VITE_FRONT_ENV;
@@ -47,6 +48,11 @@ function App() {
         <Route path="/about">
           <Suspense fallback={<div>Loading...</div>}>
             <About />
+          </Suspense>
+        </Route>
+        <Route path="/login">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Login />
           </Suspense>
         </Route>
         <Route path="/home">
